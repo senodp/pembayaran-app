@@ -12,7 +12,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('adminlte')}}/dist/css/adminlte.min.css">
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini" style="font-family: Calibri !important">
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
@@ -195,7 +195,7 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <div class="container-fluid">
+      {{--  <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1>Blank Page</h1>
@@ -207,7 +207,7 @@
             </ol>
           </div>
         </div>
-      </div><!-- /.container-fluid -->
+      </div><!-- /.container-fluid -->  --}}
     </section>
 
     <!-- Main content -->

@@ -3,12 +3,9 @@
 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
     <!-- Add icons to the links using the .nav-icon class
         with font-awesome or any other icon font library -->
-    
-    
-    
     <li class="nav-header">EXAMPLES</li>
     <li class="nav-item">
-    <a href="../calendar.html" class="nav-link active">
+    <a href="{{route('operator.beranda')}}" class="nav-link active">
         <i class="nav-icon fas fa-tachometer-alt"></i>
         <p>
         Dashboard
@@ -17,10 +14,18 @@
     </a>
     </li>
     <li class="nav-item">
+    <a href="{{route('user.index')}}" class="nav-link">
+        <i class="nav-icon far fa-image"></i>
+        <p>
+        List User
+        </p>
+    </a>
+    </li>
+    <li class="nav-item">
     <a href="../gallery.html" class="nav-link">
         <i class="nav-icon far fa-image"></i>
         <p>
-        Gallery
+        -
         </p>
     </a>
     </li>
@@ -28,7 +33,7 @@
     <a href="../kanban.html" class="nav-link">
         <i class="nav-icon fas fa-columns"></i>
         <p>
-        Kanban Board
+        -
         </p>
     </a>
     </li>
@@ -36,7 +41,7 @@
     <a href="#" class="nav-link">
         <i class="nav-icon far fa-envelope"></i>
         <p>
-        Mailbox
+        -
         <i class="fas fa-angle-left right"></i>
         </p>
     </a>
@@ -61,31 +66,13 @@
         </li>
     </ul>
     </li>
-    <li class="nav-item">
-    <a href="#" class="nav-link">
-        <i class="nav-icon fas fa-book"></i>
-        <p>
-        Pages
-        <i class="fas fa-angle-left right"></i>
-        </p>
-    </a>
     
-    </li>
-    <li class="nav-item menu-open">
-    <a href="#" class="nav-link active">
-        <i class="nav-icon far fa-plus-square"></i>
-        <p>
-        Extras
-        <i class="fas fa-angle-left right"></i>
-        </p>
-    </a>
     
-    </li>
     <li class="nav-item">
     <a href="#" class="nav-link">
         <i class="nav-icon fas fa-search"></i>
         <p>
-        Search
+        -
         <i class="fas fa-angle-left right"></i>
         </p>
     </a>
