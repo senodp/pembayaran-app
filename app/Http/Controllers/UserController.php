@@ -31,7 +31,13 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'model' => new \App\Models\User(),
+            'method' => 'POST',
+            'route' => 'user.store',
+            'button' => 'Save'
+        ];
+        return view('operator.user_form', $data);
     }
 
     /**
@@ -39,7 +45,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users',
+            'nohp' => 'required|unique:users',
+            'akses' => 'required|in:operator',
+            'password' => 'required'
+        ]);
+        //input password
+        $data['password'] = bcrypt($data['password']);
+        $data['email_verified_at'] = now();
+        //proses save
+        Model::create($data);
+        flash('Data berhasil disimpan!');
+        //return back();
+        return redirect('operator/user');
     }
 
     /**
@@ -47,7 +67,7 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+
     }
 
     /**

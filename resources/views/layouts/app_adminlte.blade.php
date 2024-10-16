@@ -211,7 +211,10 @@
     </section>
 
     <!-- Main content -->
-    @include('flash::message')
+    <section class="content">
+      @include('flash::message')
+    </section>
+    <!-- @include('flash::message') -->
     @yield('content')
     <!-- /.content -->
   </div>

@@ -20,6 +20,7 @@
     <div class="card-body">
         <div class="row">
           <div class="col-12">
+            <a href="{{route('user.create')}}" class="btn btn-sm btn-success">Tambah Data</a><br><br>
             <div class="card">
               {{--  <div class="card-header">
                 <h3 class="card-title">Responsive Hover Table</h3>
@@ -45,7 +46,7 @@
                     @forelse($models as $list)
                     <tr>
                       <td>{{$loop->iteration}}</td>
-                      <td>{{$list->name}}</td>
+                      <td>{{ucfirst($list->name)}}</td>
                       <td>{{$list->nohp}}</td>
                       <td><i>{{$list->email}}</i></td>
                       <td>{{ucfirst($list->akses)}}</td>

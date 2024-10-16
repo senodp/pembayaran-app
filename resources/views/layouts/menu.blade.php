@@ -17,7 +17,7 @@
     <a href="{{route('user.index')}}" class="nav-link">
         <i class="nav-icon far fa-image"></i>
         <p>
-        List User
+        User
         </p>
     </a>
     </li>
