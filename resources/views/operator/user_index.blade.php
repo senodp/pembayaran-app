@@ -40,6 +40,7 @@
                       <th>No.HP</th>
                       <th>Email</th>
                       <th>Akses</th>
+                      <th>Pilihan</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -50,6 +51,16 @@
                       <td>{{$list->nohp}}</td>
                       <td><i>{{$list->email}}</i></td>
                       <td>{{ucfirst($list->akses)}}</td>
+                      <td>
+                        {!! Form::open([
+                          'route' => ['user.destroy', $list->id],
+                          'method' => 'DELETE',
+                          'onsubmit' => 'return confirm("Yakin ingin menghapus data ini?")'
+                        ]) !!}
+                        <a href="{{route('user.edit', $list->id)}}" class="btn btn-dark btn-sm">Edit</a>
+                        {!! Form::submit('Hapus', ['class' => 'btn btn-danger btn-sm']) !!}
+                        {!! Form::close() !!}
+                      </td>
                     </tr>
                     @empty
                     <tr>
