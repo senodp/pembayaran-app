@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    private $v_index = 'user_index';
+    private $v_create = 'user_form';
+    private $v_edit = 'user_form';
+    private $v_show = 'user_show';
+    private $routePrefix = 'user';
+
     /**
      * Display a listing of the resource.
      */
@@ -19,7 +25,7 @@ class UserController extends Controller
         //                   ->latest()
         //                   ->paginate(20);
 
-        return view('operator.user_index', [
+        return view('operator.' . $this->v_index, [
             'models' => Model::where('akses','<>','walimurid')
             ->latest()
             ->paginate(20)
@@ -32,12 +38,12 @@ class UserController extends Controller
     public function create()
     {
         $data = [
-            'model' => new \App\Models\User(),
+            'model' => new Model(),
             'method' => 'POST',
-            'route' => 'user.store',
+            'route' => $this->routePrefix . '.store',
             'button' => 'Save'
         ];
-        return view('operator.user_form', $data);
+        return view('operator.' . $this->v_create, $data);
     }
 
     /**
@@ -76,12 +82,12 @@ class UserController extends Controller
     public function edit(string $id)
     {
         $data = [
-            'model' => \App\Models\User::findOrFail($id),
+            'model' => Model::findOrFail($id),
             'method' => 'PUT',
-            'route' => ['user.update', $id],
+            'route' => [$this->routePrefix . '.update', $id],
             'button' => 'Update'
         ];
-        return view('operator.user_form', $data);
+        return view('operator.' . $this->v_edit, $data);
     }
 
     /**
