@@ -5,7 +5,7 @@
         with font-awesome or any other icon font library -->
     <li class="nav-header">EXAMPLES</li>
     <li class="nav-item">
-    <a href="{{route('operator.beranda')}}" class="nav-link active">
+    <a href="{{route('operator.beranda')}}" class="nav-link {{ \Route::is('operator.beranda') ? 'active' : ''}}">
         <i class="nav-icon fas fa-tachometer-alt"></i>
         <p>
         Dashboard
@@ -14,7 +14,7 @@
     </a>
     </li>
     <li class="nav-item">
-    <a href="{{route('user.index')}}" class="nav-link">
+    <a href="{{route('user.index')}}" class="nav-link {{ \Route::is('user.*') ? 'active' : ''}}">
         <i class="nav-icon far fa-image"></i>
         <p>
         User
