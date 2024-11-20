@@ -97,13 +97,13 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         $data = $request->validate([
             'name' => 'required',
             'email' => 'required|unique:users,email,' . $id,
             'nohp' => 'required|unique:users,nohp,' . $id,
-            'akses' => 'required|in:operator',
+            //'akses' => 'required|in:operator',
             'password' => 'nullable' //boleh kosong
         ]);
         $model = Model::findOrFail($id);
