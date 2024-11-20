@@ -5,7 +5,7 @@
     <!-- Default box -->
     <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Form User</h3>
+        <h3 class="card-title">{{ $title }}</h3>
 
         <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -48,17 +48,20 @@
                         <span class="text-danger">{{$errors->first('nohp')}}</span>
                     </div>
                 </div>
+                @if(\Route::is('user.create'))
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Hak Akses</label>
                         {!! Form::select('akses', [
                             'operator'=>'Operator',
-                            'admin' => 'Administrator'
+                            'admin' => 'Administrator',
+                            'walimurid' => 'Wali Murid'
                             ], null, ['class'=>'form-control']
                         ) !!}
                         <span class="text-danger">{{$errors->first('akses')}}</span>
                     </div>
                 </div>
+                @endif
           </div>
           {!! Form::submit($button, ['class'=>'btn btn-success btn-sm']) !!}
           {!! Form::close() !!}

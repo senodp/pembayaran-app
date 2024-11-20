@@ -14,20 +14,28 @@
     </a>
     </li>
     <li class="nav-item">
-    <a href="{{route('user.index')}}" class="nav-link {{ \Route::is('user.*') ? 'active' : ''}}">
-        <i class="nav-icon far fa-image"></i>
-        <p>
-        User
-        </p>
-    </a>
+        <a href="{{route('user.index')}}" class="nav-link {{ \Route::is('user.*') ? 'active' : ''}}">
+            <i class="nav-icon far fa-user"></i>
+            <p>
+            User
+            </p>
+        </a>
     </li>
     <li class="nav-item">
-    <a href="../gallery.html" class="nav-link">
-        <i class="nav-icon far fa-image"></i>
-        <p>
-        -
-        </p>
-    </a>
+        <a href="{{route('walimurid.index')}}" class="nav-link {{ \Route::is('walimurid.*') ? 'active' : ''}}">
+            <i class="nav-icon fas fa-user-friends"></i>
+            <p>
+            Wali Murid
+            </p>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="../gallery.html" class="nav-link">
+            <i class="nav-icon far fa-image"></i>
+            <p>
+            -
+            </p>
+        </a>
     </li>
     <li class="nav-item">
     <a href="../kanban.html" class="nav-link">

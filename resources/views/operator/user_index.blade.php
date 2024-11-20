@@ -6,7 +6,7 @@
     <!-- Default box -->
     <div class="card">
     <div class="card-header">
-        <h3 class="card-title">List User</h3>
+        <h3 class="card-title">{{ $title }}</h3>
 
         <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -20,7 +20,7 @@
     <div class="card-body">
         <div class="row">
           <div class="col-12">
-            <a href="{{route('user.create')}}" class="btn btn-sm btn-success">Tambah Data</a><br><br>
+            <a href="{{route($routePrefix . '.create')}}" class="btn btn-sm btn-success">Tambah Data</a><br><br>
             <div class="card">
               {{--  <div class="card-header">
                 <h3 class="card-title">Responsive Hover Table</h3>
@@ -53,11 +53,11 @@
                       <td>{{ucfirst($list->akses)}}</td>
                       <td>
                         {!! Form::open([
-                          'route' => ['user.destroy', $list->id],
+                          'route' => [$routePrefix . '.destroy', $list->id],
                           'method' => 'DELETE',
                           'onsubmit' => 'return confirm("Yakin ingin menghapus data ini?")'
                         ]) !!}
-                        <a href="{{route('user.edit', $list->id)}}" class="btn btn-dark btn-sm">
+                        <a href="{{route($routePrefix . '.edit', $list->id)}}" class="btn btn-dark btn-sm">
                         <i class="fa fa-edit"></i> Edit</a>
                         <button type="submit" class="btn btn-danger btn-sm">
                         <i class="fa fa-trash"></i> Hapus

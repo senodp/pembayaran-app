@@ -5,13 +5,13 @@ use \App\Models\User as Model; //alias
 
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class WalimuridController extends Controller
 {
     private $v_index = 'user_index';
     private $v_create = 'user_form';
     private $v_edit = 'user_form';
     private $v_show = 'user_show';
-    private $routePrefix = 'user';
+    private $routePrefix = 'walimurid';
 
     /**
      * Display a listing of the resource.
@@ -26,11 +26,11 @@ class UserController extends Controller
         //                   ->paginate(20);
 
         return view('operator.' . $this->v_index, [
-            'models' => Model::where('akses','<>','walimurid')
+            'models' => Model::where('akses', 'walimurid')
                 ->latest()
                 ->paginate(20),
             'routePrefix' => $this->routePrefix,
-            'title' => 'List User'
+            'title' => 'List Wali Murid' 
         ]);
     }
 
@@ -44,7 +44,7 @@ class UserController extends Controller
             'method' => 'POST',
             'route' => $this->routePrefix . '.store',
             'button' => 'Save',
-            'title' => 'Form Add User'
+            'title' => 'Form Add Wali Murid'
         ];
         return view('operator.' . $this->v_create, $data);
     }
@@ -58,17 +58,18 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|unique:users',
             'nohp' => 'required|unique:users',
-            'akses' => 'required|in:operator',
+            // 'akses' => 'required|in:operator',
             'password' => 'required'
         ]);
         //input password
         $data['password'] = bcrypt($data['password']);
         $data['email_verified_at'] = now();
+        $data['akses'] = 'walimurid';
         //proses save
         Model::create($data);
         flash('Data berhasil disimpan!');
         //return back();
-        return redirect('operator/user');
+        return redirect('operator/walimurid');
     }
 
     /**
@@ -89,7 +90,7 @@ class UserController extends Controller
             'method' => 'PUT',
             'route' => [$this->routePrefix . '.update', $id],
             'button' => 'Update',
-            'title' => 'Form Edit User'
+            'title' => 'Form Edit Wali Murid'
         ];
         return view('operator.' . $this->v_edit, $data);
     }
@@ -103,7 +104,7 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|unique:users,email,' . $id,
             'nohp' => 'required|unique:users,nohp,' . $id,
-            'akses' => 'required|in:operator',
+            //'akses' => 'required|in:operator',
             'password' => 'nullable' //boleh kosong
         ]);
         $model = Model::findOrFail($id);
@@ -117,22 +118,22 @@ class UserController extends Controller
         $model->save();
         flash('Data berhasil diubah!');
         //return back();
-        return redirect('operator/user');
+        return redirect('operator/walimurid');
     }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {
-        $model = Model::findOrFail($id);
+    {                         //dapatkan satu data walimurid 
+        $model = Model::where('akses', 'walimurid')->findOrFail($id);
         //kecuali email admin
-        if($model->email == 'operator@komunigrafik.com'){
-            flash('Data tidak bisa dihapus!')->error();
-            return back();
-        }
+        // if($model->email == 'operator@komunigrafik.com'){
+        //     flash('Data tidak bisa dihapus!')->error();
+        //     return back();
+        // }
         $model->delete();
         flash('Data berhasil di Hapus!');
-        return redirect()->route('user.index');
+        return redirect()->route('walimurid.index');
     }
 }

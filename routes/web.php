@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BerandaOperatorController;
 use App\Http\Controllers\BerandaWalimuridController;
 use Illuminate\Support\Facades\Auth;
+
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WalimuridController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +22,10 @@ use App\Http\Controllers\UserController;
 Route::prefix('operator')->middleware(['auth','auth.operator'])->group(function(){
     //ini route khusus untuk operator
     Route::get('beranda', [BerandaOperatorController::class, 'index'])->name('operator.beranda');
-    //Uer CRUD
+    //User CRUD
     Route::resource('user', UserController::class);
+    //Walimurid CRUD
+    Route::resource('walimurid', WalimuridController::class);
 });
 
 Route::prefix('walimurid')->middleware(['auth','auth.walimurid'])->group(function(){
